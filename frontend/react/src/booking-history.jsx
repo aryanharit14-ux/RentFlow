@@ -45,7 +45,7 @@ function resolveImageUrl(img, category) {
     const fallback = getCategoryFallback(category);
     if (!img || img === '/assets/profile.png') return fallback;
     if (img.startsWith('http://') || img.startsWith('https://')) return img;
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const apiUrl = import.meta.env.VITE_API_URL || '';
     if (img.startsWith('/uploads')) return `${apiUrl}${img}`;
     if (img.startsWith('uploads/')) return `${apiUrl}/${img}`;
     return img;

@@ -1,9 +1,39 @@
 {
-  "redirects": [
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "backend": {
+      "root": "backend",
+      "framework": "express"
+    },
+    "react": {
+      "root": "frontend/react",
+      "framework": "vite"
+    }
+  },
+  "rewrites": [
     {
-      "source": "/",
-      "destination": "/html/index.html",
-      "permanent": false
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/uploads/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/socket.io/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "react"
+      }
     }
   ]
 }

@@ -6,7 +6,7 @@
  */
 
 export const API_URL =
-    import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    import.meta.env.VITE_API_URL || '';
 
 /**
  * Returns authentication headers using the canonical JWT based authentication.

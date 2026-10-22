@@ -40,7 +40,8 @@ function getAllowedOrigins() {
 }
 
 const originCallback = (origin, callback) => {
-    // allow requests with no origin (like mobile apps or curl requests)
+    // Allow requests with no origin (like mobile apps, curl, or same-origin
+    // requests from Vercel services on the same domain).
     if (!origin) return callback(null, true);
 
     const allowedOrigins = getAllowedOrigins();

@@ -5,7 +5,7 @@
    Usage: import via <script src="../js/api.js"></script>
    ============================================================ */
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = '/api';
 
 /**
  * Makes an authenticated fetch request to the RentFlow backend.

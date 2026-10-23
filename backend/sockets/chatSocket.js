@@ -29,17 +29,19 @@ module.exports = function (io) {
                 process.env.JWT_SECRET
             );
 
-            if (!decoded.userId) {
+            const userId = decoded.userId || decoded.id || decoded._id;
+
+            if (!userId) {
                 return next(new Error('Invalid authentication token'));
             }
 
-            if (!mongoose.Types.ObjectId.isValid(decoded.userId)) {
+            if (!mongoose.Types.ObjectId.isValid(userId)) {
                 return next(new Error('Invalid authentication token'));
             }
 
             // Keep compatibility with the existing chat code.
             socket.user = {
-                _id: String(decoded.userId),
+                _id: String(userId),
                 role: decoded.role || 'user'
             };
 
